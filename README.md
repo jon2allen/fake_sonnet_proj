@@ -15,6 +15,20 @@ The automation, prompting, and bulk queries in this pipeline are powered by **Ch
 
 All script files with the `.chatdsl` extension (e.g., `sonnet1.chatdsl`, `anal8.chatdsl`) and the shell scripts executing them in this project rely on a functional installation of the `chatybot` utility on the host machine.
 
+### Setup & Installation
+
+1. Install chatybot from PyPI:
+   ```bash
+   pip install chatybot
+   ```
+   *Requires Python 3.11+*
+
+2. Set your Mistral AI API key as an environment variable before running chatybot:
+   ```bash
+   export MISTRAL_API_KEY="your_api_key_here"
+   ```
+   This project uses the `mistral_1` model alias which is predefined in chatybot's configuration and will automatically use the `MISTRAL_API_KEY` environment variable.
+
 ---
 
 ## Project Pipeline & Architecture
@@ -65,6 +79,8 @@ These folders house the authentic results from the initial experimental run, ser
 ---
 
 ## How to Run the Pipeline
+
+**Note:** Run all commands from the root directory of this project.
 
 Follow these steps sequentially to reproduce the entire experiment:
 
