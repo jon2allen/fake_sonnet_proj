@@ -14,7 +14,7 @@ def roman_to_int(s):
     return int_val
 
 def main():
-    mix_dir = '/home/jon2allen/python/data/jon2allen/fake_sonnets/mix_sonnet'
+    mix_dir = 'mix_sonnet'
     sonnets = []
 
     print(f"Scanning directory: {mix_dir}...")

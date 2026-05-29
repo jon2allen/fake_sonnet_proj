@@ -13,7 +13,7 @@ def get_file_list(directory):
     except FileNotFoundError:
         return []
 
-def create_sequence(real_dir, fake_dir, total=155):
+def create_sequence(real_dir, fake_dir, total=154):
     real_files = get_file_list(real_dir)
     fake_files = get_file_list(fake_dir)
 
@@ -70,11 +70,12 @@ def create_sequence(real_dir, fake_dir, total=155):
     return sequence
 
 
-def write_mix_sequence(sequence, target_directory):
+def write_mix_sequence(sequence, target_directory, verbose=True):
     """
     Copies files from the sequence dictionary into the target directory.
     """
-    print(f"Starting copy of {len(sequence)} files to '{target_directory}'...")
+    if verbose:
+        print(f"Starting copy of {len(sequence)} files to '{target_directory}'...")
     
     for key, src_path in sequence.items():
         dest_dir = os.path.join(target_directory)
@@ -85,24 +86,26 @@ def write_mix_sequence(sequence, target_directory):
         # Copy the file
         try:
             shutil.copy(src_path, dest_dir)
-            print("copying: ", src_path )
+            if verbose:
+                print("copying: ", src_path )
         except IOError as e:
             print(f"[ERROR] Failed to copy {src_path}: {e}")
-            
-    print("Copy complete!")
+    
+    if verbose:
+        print("Copy complete!")
 
 # Example usage
 real_dir = "data"  
 fake_dir = "fake_sonnet" 
 mix_dir = "mix_sonnet" 
 
-sequence = create_sequence(real_dir, fake_dir, total=155)
+sequence = create_sequence(real_dir, fake_dir, total=154)
 
-# Print the sequence
+# Print the sequence in the format expected by mix_compare_results.py
 for key, value in sequence.items():
-    print(f"{key}: {value}")
+    print(f"copying:  {value}")
 
-write_mix_sequence( sequence, mix_dir )
+write_mix_sequence( sequence, mix_dir, verbose=False )
 
 # Quick sanity check printout
 print(f"\n--- Verification ---")

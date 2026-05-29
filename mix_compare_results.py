@@ -4,8 +4,8 @@ import re
 import sys
 
 def main():
-    # Define directories and files
-    project_dir = "/home/jon2allen/python/data/jon2allen/fake_sonnets"
+    # Define directories and files - use current working directory
+    project_dir = "."
     manifest_path = os.path.join(project_dir, "mix_sonnet/manifest.txt")
     anal_dir = os.path.join(project_dir, "anal8")
 
